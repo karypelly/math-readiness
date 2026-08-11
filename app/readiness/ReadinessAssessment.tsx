@@ -149,6 +149,20 @@ export default function ReadinessAssessment() {
     window.location.href = '/book'
   }
 
+  const handleRestart = () => {
+    localStorage.removeItem(STORAGE_KEY)
+    setState({
+      parent: {},
+      student: {},
+      intent: {},
+      diagnostic: { answers: [], skills: {} },
+      attribution: state.attribution,
+    })
+    setCurrentQuestionIndex(0)
+    setCurrentStep(0)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   // Render individual steps
   const renderStep = () => {
     switch (stepKey) {
@@ -338,6 +352,7 @@ export default function ReadinessAssessment() {
               window.location.href = '/'
             }}
             onBook={handleBookingRedirect}
+            onRestart={handleRestart}
           />
         )
 
@@ -1226,12 +1241,14 @@ function NextStepScreen({
   onViewResources,
   onViewOffer,
   onBook,
+  onRestart,
 }: {
   analysis: any
   intent?: string
   onViewResources: () => void
   onViewOffer: () => void
   onBook: () => void
+  onRestart: () => void
 }) {
   // Determine which path to show based on intent and academic need
   const highIntent = ['weekly', 'ongoing'].includes(intent ?? '')
@@ -1333,6 +1350,15 @@ function NextStepScreen({
           </div>
         </>
       )}
+      <div className="mt-10 border-t border-gray-200 pt-8 text-center">
+        <button
+          type="button"
+          onClick={onRestart}
+          className="px-6 py-3 border-2 border-gray-300 text-gray-700 font-semibold rounded-lg hover:border-gray-400 hover:bg-gray-50 transition"
+        >
+          Restart Assessment
+        </button>
+      </div>
     </div>
   )
 }
