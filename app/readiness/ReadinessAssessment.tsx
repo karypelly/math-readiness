@@ -1321,7 +1321,7 @@ function NextStepScreen({
           </div>
 
           <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-8 mb-8">
-            <h3 className="text-xl font-bold text-gray-900 mb-3">September Math Ready — Private</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Be September Math Ready</h3>
             <p className="text-gray-700 mb-4">
               Go beyond this quick snapshot with a personalized 1-on-1 assessment, targeted instruction, practice, and a September plan.
             </p>
@@ -1368,7 +1368,7 @@ function NextStepScreen({
           </div>
 
           <div className="bg-gray-50 rounded-lg p-6 mb-8">
-            <h3 className="font-bold text-gray-900 mb-2">September Math Ready — Private</h3>
+            <h3 className="font-bold text-gray-900 mb-2">Be September Math Ready</h3>
             <p className="text-sm text-gray-700">
               1-on-1 assessment, targeted instruction, personalized practice, and September recommendations.
             </p>
