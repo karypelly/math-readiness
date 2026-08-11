@@ -1014,7 +1014,7 @@ function EmailCaptureScreen({
   const [firstName, setFirstName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
-  const [consent, setConsent] = useState(true)
+  const [consent, setConsent] = useState(false)
 
   return (
     <div className="max-w-2xl mx-auto py-8">
