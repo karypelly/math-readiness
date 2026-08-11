@@ -1358,20 +1358,20 @@ function NextStepScreen({
               Choose a Session Time
               <ChevronRight size={20} />
             </button>
+            <button
+              onClick={onViewOffer}
+              className="w-full px-6 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition flex items-center justify-center gap-2"
+            >
+              See September Math Ready Program
+              <ChevronRight size={20} />
+            </button>
           </div>
 
           <div className="bg-gray-50 rounded-lg p-6 mb-8">
             <h3 className="font-bold text-gray-900 mb-2">September Math Ready — Private</h3>
-            <p className="text-sm text-gray-700 mb-4">
+            <p className="text-sm text-gray-700">
               1-on-1 assessment, targeted instruction, personalized practice, and September recommendations.
             </p>
-            <button
-              onClick={onViewOffer}
-              className="text-blue-600 hover:text-blue-700 font-semibold flex items-center gap-2"
-            >
-              See September Math Ready Program
-              <ChevronRight size={18} />
-            </button>
           </div>
         </>
       )}
