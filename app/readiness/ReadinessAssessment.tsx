@@ -1179,10 +1179,13 @@ function ResultsScreen({
         
         <div className="space-y-6">
           {Object.entries(analysis.skillBreakdown).map(([skill, data]: [string, any]) => {
-            const statusColor = data.status === 'Strong' ? 'text-green-600' :
+            const isZero = data.percentage === 0
+            const statusColor = isZero ? 'text-red-600' :
+                               data.status === 'Strong' ? 'text-green-600' :
                                data.status === 'Review' ? 'text-yellow-600' :
                                'text-orange-600'
-            const barColor = data.status === 'Strong' ? 'bg-green-500' :
+            const barColor = isZero ? 'bg-red-500' :
+                            data.status === 'Strong' ? 'bg-green-500' :
                             data.status === 'Review' ? 'bg-yellow-500' :
                             'bg-orange-500'
             
@@ -1194,7 +1197,7 @@ function ResultsScreen({
                     <p className={`text-sm font-semibold ${statusColor}`}>{data.status}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-2xl font-bold text-gray-900">{data.percentage}%</p>
+                    <p className={`text-2xl font-bold ${isZero ? 'text-red-600' : 'text-gray-900'}`}>{data.percentage}%</p>
                     <p className="text-xs text-gray-600">({data.questionsCorrect}/{data.questionsAttempted})</p>
                   </div>
                 </div>
