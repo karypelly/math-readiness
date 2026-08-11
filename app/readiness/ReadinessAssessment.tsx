@@ -369,7 +369,7 @@ export default function ReadinessAssessment() {
       {/* Header with logo/branding */}
       <div className="bg-white border-b border-gray-200">
         <div className="w-full px-5 sm:px-8 py-3">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3.5">
             <Image
               src="/infinite-solutions-logo.png"
               alt="Infinite Solutions Tutoring logo"
@@ -378,7 +378,14 @@ export default function ReadinessAssessment() {
               priority
               className="h-16 w-16 object-contain"
             />
-            <div className="text-base font-semibold text-gray-700">Infinite Solutions Tutoring</div>
+            <div className="flex flex-col justify-center leading-none">
+              <span className="text-xl sm:text-2xl font-semibold tracking-tight text-slate-900">
+                Infinite Solutions
+              </span>
+              <span className="mt-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-teal-700">
+                Tutoring
+              </span>
+            </div>
           </div>
         </div>
       </div>
