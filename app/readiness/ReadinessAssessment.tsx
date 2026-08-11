@@ -166,10 +166,9 @@ export default function ReadinessAssessment() {
         return (
           <ParentGradeQuestion
             value={state.student.grade_entering}
-            onChange={(grade) => {
-              handleStudentContextUpdate('grade_entering', grade)
-              handleNextStep()
-            }}
+            onChange={(grade) => handleStudentContextUpdate('grade_entering', grade)}
+            onNext={handleNextStep}
+            onPrevious={handlePrevStep}
           />
         )
 
@@ -177,10 +176,9 @@ export default function ReadinessAssessment() {
         return (
           <ParentPerformanceQuestion
             value={state.student.recent_math_range}
-            onChange={(range) => {
-              handleStudentContextUpdate('recent_math_range', range)
-              handleNextStep()
-            }}
+            onChange={(range) => handleStudentContextUpdate('recent_math_range', range)}
+            onNext={handleNextStep}
+            onPrevious={handlePrevStep}
           />
         )
 
@@ -188,10 +186,9 @@ export default function ReadinessAssessment() {
         return (
           <ParentConcernsQuestion
             value={state.student.concerns || []}
-            onChange={(concerns) => {
-              handleStudentContextUpdate('concerns', concerns)
-              handleNextStep()
-            }}
+            onChange={(concerns) => handleStudentContextUpdate('concerns', concerns)}
+            onNext={handleNextStep}
+            onPrevious={handlePrevStep}
           />
         )
 
@@ -199,10 +196,9 @@ export default function ReadinessAssessment() {
         return (
           <ParentProfileQuestion
             value={state.student.learning_profile}
-            onChange={(profile) => {
-              handleStudentContextUpdate('learning_profile', profile)
-              handleNextStep()
-            }}
+            onChange={(profile) => handleStudentContextUpdate('learning_profile', profile)}
+            onNext={handleNextStep}
+            onPrevious={handlePrevStep}
           />
         )
 
@@ -210,10 +206,9 @@ export default function ReadinessAssessment() {
         return (
           <ParentGoalsQuestion
             value={state.student.primary_goal}
-            onChange={(goal) => {
-              handleStudentContextUpdate('primary_goal', goal)
-              handleNextStep()
-            }}
+            onChange={(goal) => handleStudentContextUpdate('primary_goal', goal)}
+            onNext={handleNextStep}
+            onPrevious={handlePrevStep}
           />
         )
 
@@ -221,14 +216,15 @@ export default function ReadinessAssessment() {
         return (
           <ParentIntentQuestion
             value={state.intent.support_intent}
-            onChange={(intent) => {
-              handleIntentUpdate('support_intent', intent)
+            onChange={(intent) => handleIntentUpdate('support_intent', intent)}
+            onNext={() => {
               trackAnalytics('parent_context_completed', {
                 grade: state.student.grade_entering,
                 source: state.attribution.source,
               })
               handleNextStep()
             }}
+            onPrevious={handlePrevStep}
           />
         )
 
@@ -480,9 +476,13 @@ function IntroScreen({ onNext }: { onNext: () => void }) {
 function ParentGradeQuestion({
   value,
   onChange,
+  onNext,
+  onPrevious,
 }: {
   value?: number
   onChange: (grade: number) => void
+  onNext: () => void
+  onPrevious: () => void
 }) {
   return (
     <ParentQuestion
@@ -494,6 +494,8 @@ function ParentGradeQuestion({
       }))}
       value={value}
       onChange={onChange}
+      onNext={onNext}
+      onPrevious={onPrevious}
     />
   )
 }
@@ -501,9 +503,13 @@ function ParentGradeQuestion({
 function ParentPerformanceQuestion({
   value,
   onChange,
+  onNext,
+  onPrevious,
 }: {
   value?: string
   onChange: (range: string) => void
+  onNext: () => void
+  onPrevious: () => void
 }) {
   return (
     <ParentQuestion
@@ -519,6 +525,8 @@ function ParentPerformanceQuestion({
       ]}
       value={value}
       onChange={onChange}
+      onNext={onNext}
+      onPrevious={onPrevious}
     />
   )
 }
@@ -526,9 +534,13 @@ function ParentPerformanceQuestion({
 function ParentConcernsQuestion({
   value,
   onChange,
+  onNext,
+  onPrevious,
 }: {
   value: string[]
   onChange: (concerns: string[]) => void
+  onNext: () => void
+  onPrevious: () => void
 }) {
   const options = [
     'Gaps from last year',
@@ -604,14 +616,11 @@ function ParentConcernsQuestion({
         </div>
       )}
 
-      <button
-        onClick={() => onChange(value)}
-        disabled={value.length === 0}
-        className="w-full px-6 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-lg"
-      >
-        Continue
-        <ChevronRight size={20} />
-      </button>
+      <QuestionNavigation
+        onPrevious={onPrevious}
+        onNext={onNext}
+        nextDisabled={value.length === 0}
+      />
     </div>
   )
 }
@@ -619,9 +628,13 @@ function ParentConcernsQuestion({
 function ParentProfileQuestion({
   value,
   onChange,
+  onNext,
+  onPrevious,
 }: {
   value?: string
   onChange: (profile: string) => void
+  onNext: () => void
+  onPrevious: () => void
 }) {
   return (
     <ParentQuestion
@@ -649,6 +662,8 @@ function ParentProfileQuestion({
       ]}
       value={value}
       onChange={onChange}
+      onNext={onNext}
+      onPrevious={onPrevious}
     />
   )
 }
@@ -656,9 +671,13 @@ function ParentProfileQuestion({
 function ParentGoalsQuestion({
   value,
   onChange,
+  onNext,
+  onPrevious,
 }: {
   value?: string
   onChange: (goal: string) => void
+  onNext: () => void
+  onPrevious: () => void
 }) {
   return (
     <ParentQuestion
@@ -675,6 +694,8 @@ function ParentGoalsQuestion({
       ]}
       value={value}
       onChange={onChange}
+      onNext={onNext}
+      onPrevious={onPrevious}
     />
   )
 }
@@ -682,9 +703,13 @@ function ParentGoalsQuestion({
 function ParentIntentQuestion({
   value,
   onChange,
+  onNext,
+  onPrevious,
 }: {
   value?: string
   onChange: (intent: string) => void
+  onNext: () => void
+  onPrevious: () => void
 }) {
   return (
     <ParentQuestion
@@ -702,6 +727,8 @@ function ParentIntentQuestion({
       ]}
       value={value}
       onChange={onChange}
+      onNext={onNext}
+      onPrevious={onPrevious}
     />
   )
 }
@@ -712,12 +739,16 @@ function ParentQuestion({
   options,
   value,
   onChange,
+  onNext,
+  onPrevious,
 }: {
   number: number
   question: string
   options: Array<{ label: string; value: any }>
   value?: any
   onChange: (value: any) => void
+  onNext: () => void
+  onPrevious: () => void
 }) {
   const progress = (number / 6) * 100
 
@@ -769,13 +800,41 @@ function ParentQuestion({
         </div>
       </div>
 
-      {/* Next button */}
+      <QuestionNavigation
+        onPrevious={onPrevious}
+        onNext={onNext}
+        nextDisabled={value === undefined || value === null}
+      />
+    </div>
+  )
+}
+
+function QuestionNavigation({
+  onPrevious,
+  onNext,
+  nextDisabled,
+}: {
+  onPrevious: () => void
+  onNext: () => void
+  nextDisabled: boolean
+}) {
+  return (
+    <div className="flex gap-4">
       <button
-        onClick={() => onChange(value)}
-        disabled={value === undefined || value === null}
-        className="w-full px-6 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-lg"
+        type="button"
+        onClick={onPrevious}
+        className="px-5 py-4 border-2 border-gray-300 text-gray-700 font-semibold rounded-lg hover:border-gray-400 transition flex items-center justify-center gap-2"
       >
-        Continue
+        <ChevronLeft size={20} />
+        Previous
+      </button>
+      <button
+        type="button"
+        onClick={onNext}
+        disabled={nextDisabled}
+        className="flex-1 px-6 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-lg"
+      >
+        Next
         <ChevronRight size={20} />
       </button>
     </div>
