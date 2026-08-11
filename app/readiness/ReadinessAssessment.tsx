@@ -382,7 +382,7 @@ export default function ReadinessAssessment() {
               <span className="text-xl sm:text-2xl font-semibold tracking-tight text-slate-900">
                 Infinite Solutions
               </span>
-              <span className="mt-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-teal-700">
+              <span className="mt-1 text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-teal-700">
                 Tutoring
               </span>
             </div>
