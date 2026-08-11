@@ -1193,17 +1193,15 @@ function ResultsScreen({
                     <h4 className="font-bold text-gray-900 text-lg">{skill}</h4>
                     <p className={`text-sm font-semibold ${statusColor}`}>{data.status}</p>
                   </div>
-                  {data.percentage !== undefined && (
-                    <div className="text-right">
-                      <p className="text-2xl font-bold text-gray-900">{data.percentage}%</p>
-                      <p className="text-xs text-gray-600">({data.questionsCorrect}/{data.questionsAttempted})</p>
-                    </div>
-                  )}
+                  <div className="text-right">
+                    <p className="text-2xl font-bold text-gray-900">{data.percentage}%</p>
+                    <p className="text-xs text-gray-600">({data.questionsCorrect}/{data.questionsAttempted})</p>
+                  </div>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-3 mb-4">
                   <div
                     className={`${barColor} h-3 rounded-full transition-all`}
-                    style={{ width: `${data.percentage || 0}%` }}
+                    style={{ width: `${data.percentage}%` }}
                   />
                 </div>
                 <p className="text-sm text-gray-700">{data.recommendation}</p>

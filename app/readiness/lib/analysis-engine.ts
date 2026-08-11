@@ -72,7 +72,7 @@ export function analyzeReadiness(state: ReadinessState): AnalysisResult {
       skill: skillName,
       questionsAttempted: data.total,
       questionsCorrect: data.correct,
-      percentage: data.total > 1 ? percentage : undefined,
+      percentage,
       status,
       recommendation,
     }
