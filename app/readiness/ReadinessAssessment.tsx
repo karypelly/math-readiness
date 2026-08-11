@@ -16,6 +16,8 @@ function ChevronLeft({ size = 20 }: { size?: number }) {
 }
 
 const STORAGE_KEY = 'readiness_assessment_draft'
+// Replace this placeholder with the final external landing-page URL.
+const SEPTEMBER_MATH_READY_LANDING_URL = '/landing'
 const READINESS_STEPS = [
   'intro',
   'parent-grade',
@@ -350,7 +352,7 @@ export default function ReadinessAssessment() {
                 source: state.attribution.source,
                 analysis_classification: analysis.classification,
               })
-              window.location.href = '/'
+              window.location.href = SEPTEMBER_MATH_READY_LANDING_URL
             }}
             onBook={handleBookingRedirect}
             onRestart={handleRestart}
@@ -366,7 +368,7 @@ export default function ReadinessAssessment() {
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       {/* Header with logo/branding */}
       <div className="bg-white border-b border-gray-200">
-        <div className="max-w-2xl mx-auto px-4 py-4">
+        <div className="w-full px-5 sm:px-8 py-3">
           <div className="flex items-center gap-3">
             <Image
               src="/infinite-solutions-logo.png"
@@ -374,9 +376,9 @@ export default function ReadinessAssessment() {
               width={56}
               height={56}
               priority
-              className="h-12 w-12 object-contain"
+              className="h-16 w-16 object-contain"
             />
-            <div className="text-sm font-medium text-gray-700">Infinite Solutions Tutoring</div>
+            <div className="text-base font-semibold text-gray-700">Infinite Solutions Tutoring</div>
           </div>
         </div>
       </div>
@@ -1300,7 +1302,7 @@ function NextStepScreen({
               onClick={onViewOffer}
               className="text-blue-600 hover:text-blue-700 font-semibold flex items-center gap-2"
             >
-              View tutoring options
+              See September Math Ready Program
               <ChevronRight size={18} />
             </button>
           </div>
@@ -1316,13 +1318,11 @@ function NextStepScreen({
             <p className="text-gray-700 mb-4">
               Go beyond this quick snapshot with a personalized 1-on-1 assessment, targeted instruction, practice, and a September plan.
             </p>
-            <div className="text-3xl font-bold text-blue-600 mb-6">$149 + HST</div>
-
             <button
               onClick={onViewOffer}
               className="w-full px-6 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition flex items-center justify-center gap-2 mb-3"
             >
-              See September Math Ready
+              See September Math Ready Program
               <ChevronRight size={20} />
             </button>
 
@@ -1358,7 +1358,13 @@ function NextStepScreen({
             <p className="text-sm text-gray-700 mb-4">
               1-on-1 assessment, targeted instruction, personalized practice, and September recommendations.
             </p>
-            <p className="text-2xl font-bold text-blue-600">$149 + HST</p>
+            <button
+              onClick={onViewOffer}
+              className="text-blue-600 hover:text-blue-700 font-semibold flex items-center gap-2"
+            >
+              See September Math Ready Program
+              <ChevronRight size={18} />
+            </button>
           </div>
         </>
       )}
