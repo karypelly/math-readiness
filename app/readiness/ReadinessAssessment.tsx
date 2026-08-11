@@ -262,8 +262,8 @@ export default function ReadinessAssessment() {
             answers={state.diagnostic.answers}
             currentIndex={currentQuestionIndex}
             grade={grade!}
-            onAnswer={(questionId, answer) => {
-              handleDiagnosticAnswer(questionId, answer)
+            onAnswer={handleDiagnosticAnswer}
+            onNext={() => {
               if (currentQuestionIndex < questionsForGrade.length - 1) {
                 setCurrentQuestionIndex(currentQuestionIndex + 1)
               } else {
@@ -904,6 +904,7 @@ function DiagnosticQuestionsFlow({
   currentIndex,
   grade,
   onAnswer,
+  onNext,
   onPrev,
 }: {
   questions: any[]
@@ -911,6 +912,7 @@ function DiagnosticQuestionsFlow({
   currentIndex: number
   grade: number
   onAnswer: (questionId: string, answer: string) => void
+  onNext: () => void
   onPrev: () => void
 }) {
   const currentQuestion = questions[currentIndex]
@@ -990,7 +992,7 @@ function DiagnosticQuestionsFlow({
           </button>
         )}
         <button
-          onClick={() => onAnswer(currentQuestion.id, currentAnswer || 'skipped')}
+          onClick={onNext}
           disabled={!currentAnswer}
           className="flex-1 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
         >
