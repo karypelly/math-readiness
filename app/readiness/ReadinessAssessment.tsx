@@ -975,7 +975,7 @@ function DiagnosticQuestionsFlow({
               value={currentAnswer || ''}
               onChange={(e) => onAnswer(currentQuestion.id, e.target.value)}
               placeholder="Enter your answer"
-              className="w-full p-4 border-2 border-gray-200 rounded-lg bg-white text-black placeholder:text-black focus:border-blue-600 focus:outline-none"
+              className="w-full p-4 border-2 border-gray-200 rounded-lg bg-white text-black placeholder:text-gray-400 focus:border-blue-600 focus:outline-none"
             />
           )}
         </div>
@@ -1044,7 +1044,7 @@ function EmailCaptureScreen({
               onChange={(e) => setFirstName(e.target.value)}
               placeholder="Sarah"
               required
-              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-white text-black placeholder:text-black focus:border-blue-600 focus:outline-none transition text-base"
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-white text-black placeholder:text-gray-400 focus:border-blue-600 focus:outline-none transition text-base"
             />
           </div>
 
@@ -1056,7 +1056,7 @@ function EmailCaptureScreen({
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
               required
-              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-white text-black placeholder:text-black focus:border-blue-600 focus:outline-none transition text-base"
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-white text-black placeholder:text-gray-400 focus:border-blue-600 focus:outline-none transition text-base"
             />
           </div>
 
@@ -1067,7 +1067,7 @@ function EmailCaptureScreen({
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="416-555-1234"
-              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-white text-black placeholder:text-black focus:border-blue-600 focus:outline-none transition text-base"
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg bg-white text-black placeholder:text-gray-400 focus:border-blue-600 focus:outline-none transition text-base"
             />
           </div>
 
