@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { diagnosticQuestions } from './data/diagnostic-questions'
 import { analyzeReadiness } from './lib/analysis-engine'
 import { trackAnalytics } from './lib/analytics'
@@ -366,7 +367,17 @@ export default function ReadinessAssessment() {
       {/* Header with logo/branding */}
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-2xl mx-auto px-4 py-4">
-          <div className="text-sm text-gray-600">Infinite Solutions Tutoring</div>
+          <div className="flex items-center gap-3">
+            <Image
+              src="/infinite-solutions-logo.png"
+              alt="Infinite Solutions Tutoring logo"
+              width={56}
+              height={56}
+              priority
+              className="h-12 w-12 object-contain"
+            />
+            <div className="text-sm font-medium text-gray-700">Infinite Solutions Tutoring</div>
+          </div>
         </div>
       </div>
 
