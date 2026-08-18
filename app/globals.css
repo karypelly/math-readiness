@@ -97,6 +97,15 @@ input:focus-visible {
   letter-spacing: 0.24em !important;
 }
 
+.brand-header .text-slate-950 {
+  color: #020617 !important;
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  letter-spacing: -0.025em !important;
+}
+
 .progress-indicator {
   top: 69px !important;
   z-index: 40 !important;
