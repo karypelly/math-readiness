@@ -74,6 +74,8 @@ input:focus-visible {
   min-height: 68px;
   margin-inline: auto;
   padding-block: 0 !important;
+  display: flex;
+  align-items: center;
 }
 
 .brand-header img {
