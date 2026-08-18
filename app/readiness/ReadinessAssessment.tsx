@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
+import logo from '../landing/logo.png'
 import { diagnosticQuestions } from './data/diagnostic-questions'
 import { analyzeReadiness } from './lib/analysis-engine'
 import { trackAnalytics } from './lib/analytics'
@@ -372,7 +373,7 @@ export default function ReadinessAssessment() {
         <div className="brand-header__inner w-full px-5 sm:px-8 py-3">
           <div className="flex items-center gap-3.5">
             <Image
-              src="/logo.png"
+              src={logo}
               alt="Infinite Solutions Tutoring"
               width={56}
               height={56}
