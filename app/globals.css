@@ -56,6 +56,7 @@ input:focus-visible {
   min-height: 100svh;
   background: var(--background-subtle) !important;
   color: var(--text-primary);
+  overflow-x: hidden;
 }
 
 .brand-header {
@@ -116,6 +117,15 @@ input:focus-visible {
   width: 100%;
   max-width: 760px !important;
   padding: 48px 24px 96px !important;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+}
+
+.assessment-main > *,
+.assessment-main > * > * {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .assessment-main h1,
@@ -313,7 +323,17 @@ input:focus-visible {
   }
 
   .assessment-main h1 {
-    font-size: clamp(2.25rem, 11vw, 3rem) !important;
+    font-size: clamp(2.125rem, 9.5vw, 2.75rem) !important;
+  }
+
+  .assessment-main h1,
+  .assessment-main h2,
+  .assessment-main h3,
+  .assessment-main p,
+  .assessment-main span {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .assessment-main .py-12 {
