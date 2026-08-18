@@ -372,8 +372,8 @@ export default function ReadinessAssessment() {
         <div className="brand-header__inner w-full px-5 sm:px-8 py-3">
           <div className="flex items-center gap-3.5">
             <Image
-              src="/infinite-solutions-logo.png"
-              alt="Infinite Solutions Tutoring logo"
+              src="/logo.png"
+              alt="Infinite Solutions Tutoring"
               width={56}
               height={56}
               priority

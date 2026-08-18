@@ -79,8 +79,9 @@ input:focus-visible {
 }
 
 .brand-header img {
-  width: 46px !important;
   height: 46px !important;
+  width: auto !important;
+  object-fit: contain;
 }
 
 .brand-header .text-teal-700 {
@@ -300,8 +301,8 @@ input:focus-visible {
   }
 
   .brand-header img {
-    width: 40px !important;
     height: 40px !important;
+    width: auto !important;
   }
 
   .brand-header .text-xl {
