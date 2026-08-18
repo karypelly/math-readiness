@@ -366,10 +366,10 @@ export default function ReadinessAssessment() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className="readiness-app min-h-screen bg-gradient-to-b from-blue-50 to-white">
       {/* Header with logo/branding */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="w-full px-5 sm:px-8 py-3">
+      <header className="brand-header bg-white border-b border-gray-200">
+        <div className="brand-header__inner w-full px-5 sm:px-8 py-3">
           <div className="flex items-center gap-3.5">
             <Image
               src="/infinite-solutions-logo.png"
@@ -389,7 +389,7 @@ export default function ReadinessAssessment() {
             </div>
           </div>
         </div>
-      </div>
+      </header>
 
       {/* Progress indicator (hide on intro) */}
       {stepKey !== 'intro' && stepKey !== 'results' && stepKey !== 'next-step' && (
@@ -400,9 +400,9 @@ export default function ReadinessAssessment() {
       )}
 
       {/* Main content */}
-      <div className="max-w-2xl mx-auto px-4 py-8 pb-20">
+      <main className="assessment-main max-w-2xl mx-auto px-4 py-8 pb-20">
         {renderStep()}
-      </div>
+      </main>
     </div>
   )
 }
@@ -1398,8 +1398,8 @@ function ProgressIndicator({
 }) {
   const progress = ((currentStep / totalSteps) * 100)
   return (
-    <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
-      <div className="max-w-2xl mx-auto px-4 py-4">
+    <div className="progress-indicator bg-white border-b border-gray-200 sticky top-0 z-10">
+      <div className="progress-indicator__inner max-w-2xl mx-auto px-4 py-4">
         <div className="flex justify-between items-center mb-3">
           <span className="text-xs text-gray-600 font-semibold">STEP {currentStep} OF {totalSteps}</span>
           <span className="text-xs text-gray-600">{Math.round(progress)}%</span>
