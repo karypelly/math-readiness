@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import ReadinessAssessment from "./readiness/ReadinessAssessment";
 
 export default function Home() {
-  redirect("/readiness");
+  return <ReadinessAssessment />;
 }
