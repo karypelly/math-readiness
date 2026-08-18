@@ -18,8 +18,7 @@ function ChevronLeft({ size = 20 }: { size?: number }) {
 
 const STORAGE_KEY = 'readiness_assessment_draft'
 const BOOKING_URL = 'https://booking.privatetutoring.ca'
-// Replace this placeholder with the final external landing-page URL.
-const SEPTEMBER_MATH_READY_LANDING_URL = '/landing'
+const SEPTEMBER_MATH_READY_LANDING_URL = 'https://privatetutoring.ca'
 const READINESS_STEPS = [
   'intro',
   'parent-grade',
