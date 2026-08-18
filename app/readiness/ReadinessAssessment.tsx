@@ -18,7 +18,7 @@ function ChevronLeft({ size = 20 }: { size?: number }) {
 
 const STORAGE_KEY = 'readiness_assessment_draft'
 const BOOKING_URL = 'https://booking.privatetutoring.ca'
-const SEPTEMBER_MATH_READY_LANDING_URL = 'https://privatetutoring.ca'
+const SEPTEMBER_MATH_READY_LANDING_URL = 'https://privatetutoring.ca/#options'
 const PARENT_COMMUNITY_URL = 'https://www.facebook.com/groups/1046072361581701'
 const READINESS_STEPS = [
   'intro',
