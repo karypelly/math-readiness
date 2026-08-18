@@ -19,6 +19,7 @@ function ChevronLeft({ size = 20 }: { size?: number }) {
 const STORAGE_KEY = 'readiness_assessment_draft'
 const BOOKING_URL = 'https://booking.privatetutoring.ca'
 const SEPTEMBER_MATH_READY_LANDING_URL = 'https://privatetutoring.ca'
+const PARENT_COMMUNITY_URL = 'https://www.facebook.com/groups/1046072361581701'
 const READINESS_STEPS = [
   'intro',
   'parent-grade',
@@ -375,7 +376,7 @@ export default function ReadinessAssessment() {
                 grade: state.student.grade_entering,
                 source: state.attribution.source,
               })
-              window.location.href = '/resources'
+              window.location.href = PARENT_COMMUNITY_URL
             }}
             onViewOffer={() => {
               trackAnalytics('offer_clicked', {
@@ -1335,7 +1336,7 @@ function NextStepScreen({
               <ChevronRight size={20} />
             </button>
             <button
-              onClick={() => window.location.href = '#'}
+              onClick={onViewResources}
               className="w-full px-6 py-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition"
             >
               Join Parent Community
