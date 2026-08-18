@@ -16,6 +16,7 @@ function ChevronLeft({ size = 20 }: { size?: number }) {
 }
 
 const STORAGE_KEY = 'readiness_assessment_draft'
+const BOOKING_URL = 'https://booking.privatetutoring.ca'
 // Replace this placeholder with the final external landing-page URL.
 const SEPTEMBER_MATH_READY_LANDING_URL = '/landing'
 const READINESS_STEPS = [
@@ -149,7 +150,7 @@ export default function ReadinessAssessment() {
       source: state.attribution.source,
       intent_classification: state.intent.classification,
     })
-    window.location.href = '/book'
+    window.location.href = BOOKING_URL
   }
 
   const handleRestart = () => {
@@ -496,7 +497,7 @@ function IntroScreen({ onNext }: { onNext: () => void }) {
         <div className="border-t border-gray-200 pt-8">
           <p className="text-gray-700 mb-4 font-medium">Already know you want tutoring?</p>
           <a
-            href="/book"
+            href={BOOKING_URL}
             className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold text-lg"
           >
             Skip to booking
