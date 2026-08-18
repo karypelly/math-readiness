@@ -84,6 +84,12 @@ export default function ReadinessAssessment() {
     )
   }, [state, currentStep, currentQuestionIndex])
 
+  // Each assessment screen should begin at the top, especially on mobile where
+  // the previous screen's scroll position otherwise carries into the next one.
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }, [currentStep, currentQuestionIndex])
+
   const stepKey = READINESS_STEPS[currentStep]
   const grade = state.student?.grade_entering
   const questionsForGrade = grade ? diagnosticQuestions[grade] || [] : []
