@@ -63,18 +63,18 @@ input:focus-visible {
   position: sticky;
   top: 0;
   z-index: 50;
-  min-height: 68px;
   background: #ffffff !important;
   border-color: var(--border) !important;
 }
 
 .brand-header__inner {
+  height: 68px;
   max-width: 1100px;
-  min-height: 68px;
   margin-inline: auto;
-  padding-block: 0 !important;
+  padding: 0 24px !important;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .brand-header img {
@@ -86,10 +86,13 @@ input:focus-visible {
 .brand-header .text-teal-700 {
   color: var(--brand-primary) !important;
   margin-top: 1px !important;
+  font-size: 9px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.24em !important;
 }
 
 .progress-indicator {
-  top: 68px !important;
+  top: 69px !important;
   z-index: 40 !important;
   background: rgba(255, 255, 255, 0.97) !important;
   border-color: var(--border) !important;
@@ -291,28 +294,6 @@ input:focus-visible {
 }
 
 @media (max-width: 640px) {
-  .brand-header,
-  .brand-header__inner {
-    min-height: 62px;
-  }
-
-  .brand-header__inner {
-    padding-inline: 18px !important;
-  }
-
-  .brand-header img {
-    height: 40px !important;
-    width: auto !important;
-  }
-
-  .brand-header .text-xl {
-    font-size: 1.0625rem !important;
-  }
-
-  .progress-indicator {
-    top: 62px !important;
-  }
-
   .progress-indicator__inner {
     padding: 9px 18px 11px !important;
   }
@@ -375,6 +356,26 @@ input:focus-visible {
   .assessment-main button,
   .assessment-main a[class*="px-"] {
     min-height: 50px;
+  }
+}
+
+@media (max-width: 767px) {
+  .brand-header__inner {
+    height: 62px;
+    padding-inline: 18px !important;
+  }
+
+  .brand-header img {
+    height: 40px !important;
+    width: auto !important;
+  }
+
+  .brand-header .text-slate-950 {
+    font-size: 15px !important;
+  }
+
+  .progress-indicator {
+    top: 63px !important;
   }
 }
 

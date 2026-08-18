@@ -369,25 +369,25 @@ export default function ReadinessAssessment() {
   return (
     <div className="readiness-app min-h-screen bg-gradient-to-b from-blue-50 to-white">
       {/* Header with logo/branding */}
-      <header className="brand-header bg-white border-b border-gray-200">
-        <div className="brand-header__inner w-full px-5 sm:px-8 py-3">
-          <div className="flex items-center gap-3.5">
+      <header className="brand-header sticky top-0 z-50 border-b border-slate-200/70 bg-white">
+        <div className="brand-header__inner mx-auto flex h-[62px] max-w-[1100px] items-center justify-between px-[18px] md:h-[68px] md:px-6">
+          <div className="flex items-center gap-2.5 text-gray-950">
             <Image
               src={logo}
-              alt="Infinite Solutions Tutoring"
+              alt="Infinite Solutions logo"
               width={56}
               height={56}
               priority
-              className="h-16 w-16 object-contain"
+              className="h-10 w-auto object-contain md:h-[46px]"
             />
-            <div className="flex flex-col justify-center leading-none">
-              <span className="text-xl sm:text-2xl font-semibold tracking-tight text-slate-900">
+            <span className="flex flex-col justify-center leading-none">
+              <span className="text-[15px] font-semibold tracking-tight text-slate-950 md:text-base">
                 Infinite Solutions
               </span>
-              <span className="mt-1 text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-teal-700">
+              <span className="mt-px text-[9px] font-semibold uppercase tracking-[0.24em] text-teal-700">
                 Tutoring
               </span>
-            </div>
+            </span>
           </div>
         </div>
       </header>
