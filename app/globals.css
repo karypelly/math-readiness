@@ -86,6 +86,7 @@ input:focus-visible {
 
 .brand-header .text-teal-700 {
   color: var(--brand-primary) !important;
+  margin-top: 1px !important;
 }
 
 .progress-indicator {
