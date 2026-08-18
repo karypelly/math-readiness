@@ -34,6 +34,11 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+html,
+body {
+  overscroll-behavior-y: none;
+}
+
 button,
 a,
 input {
@@ -57,6 +62,7 @@ input:focus-visible {
   background: var(--background-subtle) !important;
   color: var(--text-primary);
   overflow-x: hidden;
+  overscroll-behavior-y: none;
 }
 
 .brand-header {
