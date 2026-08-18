@@ -64,9 +64,8 @@ input:focus-visible {
   top: 0;
   z-index: 50;
   min-height: 68px;
-  background: rgba(255, 255, 255, 0.97) !important;
+  background: #ffffff !important;
   border-color: var(--border) !important;
-  backdrop-filter: blur(12px);
 }
 
 .brand-header__inner {
