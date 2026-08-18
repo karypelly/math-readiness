@@ -46,6 +46,7 @@ export default function ReadinessAssessment() {
   })
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
+  const [submissionError, setSubmissionError] = useState<string | null>(null)
 
   // Restore draft from localStorage on mount
   useEffect(() => {
@@ -137,12 +138,47 @@ export default function ReadinessAssessment() {
     })
   }
 
-  const handleEmailCapture = (email: string, firstName: string, phone?: string, consent?: boolean) => {
-    setState(prev => ({
-      ...prev,
-      parent: { ...prev.parent, email, first_name: firstName, phone },
-      intent: { ...prev.intent, marketing_consent: consent },
-    }))
+  const handleAssessmentSubmit = async (
+    email: string,
+    firstName: string,
+    phone?: string,
+    consent?: boolean
+  ) => {
+    const completedState: ReadinessState = {
+      ...state,
+      parent: { ...state.parent, email, first_name: firstName, phone },
+      intent: { ...state.intent, marketing_consent: consent },
+    }
+
+    setIsLoading(true)
+    setSubmissionError(null)
+
+    try {
+      const response = await fetch('/api/readiness/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          assessment: completedState,
+          analysis: analyzeReadiness(completedState),
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Assessment delivery failed')
+      }
+
+      setState(completedState)
+      trackAnalytics('lead_captured', {
+        grade: completedState.student.grade_entering,
+        source: completedState.attribution.source,
+      })
+      handleNextStep()
+    } catch (error) {
+      console.error('Failed to submit assessment:', error)
+      setSubmissionError('We could not send your assessment. Please try again.')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleBookingRedirect = () => {
@@ -305,15 +341,9 @@ export default function ReadinessAssessment() {
       case 'email-capture':
         return (
           <EmailCaptureScreen
-            onSubmit={(email, firstName, phone, consent) => {
-              handleEmailCapture(email, firstName, phone, consent)
-              trackAnalytics('lead_captured', {
-                grade: state.student.grade_entering,
-                source: state.attribution.source,
-              })
-              handleNextStep()
-            }}
+            onSubmit={handleAssessmentSubmit}
             isLoading={isLoading}
+            submissionError={submissionError}
           />
         )
 
@@ -1044,9 +1074,11 @@ function DiagnosticQuestionsFlow({
 function EmailCaptureScreen({
   onSubmit,
   isLoading,
+  submissionError,
 }: {
-  onSubmit: (email: string, firstName: string, phone?: string, consent?: boolean) => void
+  onSubmit: (email: string, firstName: string, phone?: string, consent?: boolean) => Promise<void>
   isLoading: boolean
+  submissionError: string | null
 }) {
   const [firstName, setFirstName] = useState('')
   const [email, setEmail] = useState('')
@@ -1067,9 +1099,9 @@ function EmailCaptureScreen({
         </div>
 
         <form
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault()
-            onSubmit(email, firstName, phone, consent)
+            await onSubmit(email, firstName, phone, consent)
           }}
           className="space-y-6 mb-8"
         >
@@ -1131,6 +1163,12 @@ function EmailCaptureScreen({
             {isLoading ? 'Sending...' : 'View My Results'}
             {!isLoading && <ChevronRight size={20} />}
           </button>
+
+          {submissionError && (
+            <p role="alert" className="text-sm font-medium text-red-600 text-center">
+              {submissionError}
+            </p>
+          )}
         </form>
 
         <p className="text-xs text-gray-500 text-center">
